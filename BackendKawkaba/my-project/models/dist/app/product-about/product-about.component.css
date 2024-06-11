@@ -1,0 +1,106 @@
+.tailored {
+  background-color: white;
+}
+.header {
+  width: auto;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(2, 2, 2);
+  color: #faf9f8;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: -25px;
+}
+.product-img {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  border-radius: 0%;
+  padding: 27px 0 0;
+}
+img {
+  width: 60%;
+  height: 100%;
+}
+.product-content {
+  height: 50%;
+  width: 100%;
+  text-align: left;
+  border-radius: 0%;
+  margin-top: 20px;
+}
+#company {
+  margin: 0 0 -8px 4px;
+  padding-top: 45px;
+}
+#gender {
+  margin: -8px 0 10px 3px;
+}
+.rating {
+  display: flex;
+}
+#number-votes {
+  font-size: 12px;
+  margin-top: 4px;
+  text-decoration: underline;
+}
+.size {
+  display: flex;
+}
+.size .bottle-size {
+  display: flex;
+  margin-left: 9px;
+}
+.bottle-size p {
+  margin: 0 5px 0;
+  border: 1px solid #878080;
+  height: fit-content;
+  padding: 3px 5px;
+  font-size: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.product-content h1 {
+  text-transform: uppercase;
+}
+.product-content p {
+  margin-left: 4px;
+}
+.btn {
+  display: inline;
+  position: relative;
+  bottom: -4px;
+  padding: inherit;
+  border: none;
+  cursor: unset;
+}
+
+.mybtn {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  height: 16%;
+  width: 100%;
+  padding: 12px 15px;
+  color: #faf9f8;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  background-color: rgb(2, 2, 2);
+  margin: 0px;
+}
+.mybtn:hover {
+  background-color: transparent;
+  color: rgb(2, 2, 2);
+  border: 1px solid rgb(2, 2, 2);
+  transition: all 0.3s ease-in-out;
+}
+
+hr.line {
+  margin-top: 50px;
+}
+#description {
+  font-size: 13px;
+  margin-bottom: 50px;
+}

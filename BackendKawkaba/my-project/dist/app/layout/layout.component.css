@@ -1,0 +1,228 @@
+/* .scrolled-down {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.scrolled-up {
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+} */
+
+.navbar-hidden {
+    display: none;
+  }
+
+  .navbar {
+    transition: background-color 0.3s;
+  }
+  
+ 
+  .navbar-transparent {
+    background-color: transparent;
+  }  
+  .navbar-light {
+    background-color:#f1f8fc;
+  }
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler {
+    width: auto;
+    border: none;
+}
+
+/* .navbar-nav {
+    position: sticky;
+} */
+
+.navbar.navbar-nav .nav-link {
+    font-family: 'Nunito', sans-serif;
+font-family: 'Vollkorn', serif;
+font-family: 'Wix Madefor Text', sans-serif;
+
+}
+
+a.nav-link{
+    letter-spacing: .5px;
+    font-family: 'Nunito', sans-serif;
+font-family: 'Vollkorn', serif;
+font-family: 'Wix Madefor Text', sans-serif;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #d7b304;
+    transition: all 0.1s ease-in-out;
+}
+
+.navbar-nav .show>.nav-link,
+.navbar-light .navbar-nav .nav-link.active {
+    color: #d7b304;
+    text-decoration: underline;
+    font-weight: bolder;
+    font-family: 'Nunito', sans-serif;
+font-family: 'Vollkorn', serif;
+font-family: 'Wix Madefor Text', sans-serif;
+
+}
+
+.navbar-brand img {
+    width: 110px;
+    margin-left: -27px;
+}
+
+button.btn.mb-auto {
+    justify-content: flex-end;
+    width: 149px;
+    height: 38px;
+    color: #d7b304;
+    border-radius: 50px;
+    border: 1px solid #d7b304;
+    background-color: transparent;
+    text-align: center;
+    text-justify: auto;
+    text-transform: uppercase;
+    font-size: 13.5px;
+    letter-spacing: 5.2px;
+} 
+
+button.btn.mb-auto:hover {
+    transition: all .3s ease-in-out;
+    background-color: #eeac34;
+    color: white !important;
+    border: none;
+}
+/* .login-btn{
+    color: #d7b304;
+    text-decoration: none;
+} */
+
+
+
+footer{
+    background: rgb(12, 12, 12);
+    padding: 80px 0px 0px;
+    color: #fff;
+}
+.footer-title{
+    color: #c49e39;
+}
+
+p span{
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+}
+.footer-content p{
+    color: aliceblue;
+    font-size: 15px;
+}
+footer h1{
+        color: rgb(255, 255, 255);
+        font-size: 3rem;
+        text-transform: uppercase;
+        
+}
+
+footer .title span {
+    color: #d7b304;
+    font-size: 14px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+
+footer .title{
+    text-align: center;
+}
+footer img{
+    max-width: 100%;
+}
+
+.footer-links {
+    list-style: none;
+   padding: initial;
+    font-size: 25px;
+}
+
+.sub-footer .container {
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: 1px solid #dedede;
+    width: 100%;
+    color: #dedede;
+}
+@media (max-width:768px) {
+        .footer-content {
+        text-align: center;
+    }
+}
+@media (max-width:768px) {
+     .footer-img {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* theme */
+
+/* .light{
+    --mainColor: #dfa63e;
+    --hoverColor: #a67a44;
+    --backgroundColor: #f1f8fc;
+    --darkOne: #312f3a;
+    --darkTwo: #45424b;
+    --lightOne: #3b3e40;
+    --lightTwo: #5e523b;
+}
+.dark{
+    --mainColor: #dfa63e;
+    --hoverColor: #a67a44;
+    --backgroundColor: #141a1d;
+    --darkOne: #fff8cd;
+    --darkTwo: #ffffff;
+    --lightOne: #ccc;
+    --lightTwo: #fff7e9; 
+} */
+/* .dark .logo img {
+    filter: invert(1);
+}
+.toggle-btn{
+    display: inline-block;
+    border: none;
+    background: var(--darkTwo) ;
+    color: var(--backgroundColor);
+    outline: none;
+    cursor: pointer;
+    height: 39px;
+    width: 39px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+.toggle-btn i{
+    line-height: 39px;
+}
+.big-wrapper.light .toggle-btn i:last-child{
+    display: none;
+}
+.big-wrapper.light .toggle-btn i:first-child{
+    display: block;
+}
+.big-wrapper.dark .toggle-btn i:last-child{
+    display: block;
+}
+.big-wrapper.dark .toggle-btn i:first-child{
+    display: none;
+}
+.toggle-btn:hover{
+    background-color: var(--mainColor);
+}
+@keyframes appear {
+    0%{
+        clip-path: circle(30% at -25% -25%);
+    }
+    100% {
+        clip-path: circle(150% at 0 0);
+    }
+} */

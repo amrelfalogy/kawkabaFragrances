@@ -1,0 +1,32 @@
+.myvideo-header{
+    position: relative;
+}
+.embed-responsive-item{
+    max-width: 100%;
+}
+.myvideo{
+    position: relative;
+}
+.myvideo-header .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 1;
+}
+.myvideo-header h1{
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: #e2c315;
+  font-size: 4em;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #00000091;
+  padding: 20px;
+}
