@@ -1,0 +1,240 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light fixed-top"
+  [ngClass]="{
+    'navbar-light': !isAtTop || (!isHomePage && isAtTop),
+    'navbar-hidden': !isNavbarVisible,
+    'navbar-transparent': isAtTop && isHomePage
+  }"
+>
+  <div class="container">
+    <div class="logo" style="width: 20%">
+      <a class="navbar-brand" routerLink="">
+        <img src="assets/imgs/K100mlCopy.png" alt="Kawkaba" />
+      </a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      style="justify-content: center"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="home"
+            [routerLinkActive]="['active']"
+            (click)="onCloseClick()"
+            >HOME</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            (click)="onCloseClick()"
+            class="nav-link"
+            routerLink="personal-guide/scent-finder"
+            [routerLinkActive]="['active']"
+            >FIND MY SCENT</a
+          >
+          <!-- <div class="dropdown-container">
+            <div class="container">
+              <div class="row">
+                <div class="dropdown-content col-md-6">
+                  <h1>FIND MY SCENT</h1>
+                  <a routerLink="" (click)="onCloseClick()"
+                    >Your Personal Fragrance Guide</a
+                  >
+                  <a routerLink="" (click)="onCloseClick()">Recommendation</a>
+                  <a routerLink="" (click)="onCloseClick()"
+                    >Scan & Smell for Shop</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </li>
+
+        <li class="nav-item">
+          <a
+            (click)="onCloseClick()"
+            class="nav-link"
+            routerLink="collection"
+            [routerLinkActive]="['active']"
+            >COLLECTION
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            (click)="onCloseClick()"
+            class="nav-link"
+            routerLink="/about"
+            [routerLinkActive]="['active']"
+            >ABOUT
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            (click)="onCloseClick()"
+            class="nav-link"
+            routerLink="contact"
+            [routerLinkActive]="['active']"
+            >CONTACT
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="collapse navbar-collapse"
+      id="nav-icons"
+      style="justify-content: end"
+    >
+      <div
+        style="
+          display: inline-block;
+          padding-right: 10px;
+          font-size: 16px;
+          cursor: pointer;
+        "
+        (click)="onSearchClick()"
+      >
+        <a> <fa-icon [icon]="faSearch" style="color: #20282c"></fa-icon></a>
+      </div>
+      <div
+        style="
+          display: inline-block;
+          padding: 10px;
+          font-size: 16px;
+          cursor: pointer;
+        "
+        (click)="onCartClick()"
+      >
+        <a>
+          <fa-icon [icon]="faCartShopping" style="color: #20282c"
+            ><span *ngIf="cartItemsCount > 0">{{
+              cartItemsCount
+            }}</span></fa-icon
+          ></a
+        >
+      </div>
+      <app-cart
+        *ngIf="cartComponent.isVisible"
+        class="cart-container"
+      ></app-cart>
+
+      <app-search
+        *ngIf="searchComponent.isVisible"
+        class="search-container"
+      ></app-search>
+
+      <!-- <button class="btn mb-auto" routerLink="../login">Login</button> -->
+      <div>
+        <ng-container *ngIf="currentUser$ | async as user; else loginButton">
+          <button
+            mat-button
+            [matMenuTriggerFor]="userMenu"
+            (click)="$event.stopPropagation()"
+            *ngIf="user?.uid"
+          >
+            <mat-icon>account_circle</mat-icon>
+            {{ user.displayName }}
+            <mat-icon>expand_more</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #loginButton>
+          <button mat-button routerLink="/login">
+            <mat-icon>login</mat-icon>
+            Login
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item (click)="logout($event)">Logout</button>
+</mat-menu>
+
+<router-outlet></router-outlet>
+
+<!-- <div class="row">
+    <div class="col">
+      <div class="bottom-area">
+          <button class="toggle-btn">
+              <i class="fa-regular fa-moon"></i>  
+              <i class="fa-regular fa-sun"></i>
+          </button>
+      </div>
+    </div>
+  </div> -->
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title" style="margin-bottom: 90px">
+          <span>contact us</span>
+          <h1>Let's work together</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="footer-content col-md-9" style="margin-top: 10px">
+          <h3
+            class="footer-title mb-5"
+            style="font-weight: bold; text-transform: uppercase"
+          >
+            Git in touch
+          </h3>
+          <p style="margin-bottom: 0px"><span>Phone:</span>01066041002</p>
+          <p style="margin-bottom: 0px">
+            <span>Follow Us</span> for exclusive and new updates:
+          </p>
+          <div class="footer-links">
+            <div
+              style="
+                display: inline-block;
+                padding: 0 10px 0 0;
+                font-size: 22px;
+              "
+            >
+              <a
+                href="https://instagram.com/kawkabafragrances?utm_medium=copy_link"
+              >
+                <fa-icon [icon]="faInstagram" style="color: #c49e39"></fa-icon>
+              </a>
+            </div>
+            <div style="display: inline-block; font-size: 22px">
+              <a href="https://t.me/kawkabafragrances">
+                <fa-icon [icon]="faTelegram" style="color: #c49e39"></fa-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-img col-md-3">
+          <img src="assets/imgs/vectorpaint 22.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sub-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="text-center">
+            © Copyright {{ currentYear }} Kawkaba All rights reserved
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

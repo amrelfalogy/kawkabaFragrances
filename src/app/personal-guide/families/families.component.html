@@ -1,0 +1,68 @@
+<div *ngIf="!selectedFamily" class="families">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title mb-30" id="product">
+          <span>4/5</span>
+          <h1 class="subtitle">scent smells like</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-container row" id="first-container">
+      <div class="our-card col-md-6">
+        <div (click)="onSelectFamily('floral')" class="card" id="floral">
+          <img src="assets/imgs/families section/florall.jpg" />
+          <div class="card-container">
+            <p>floral</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-6">
+        <div (click)="onSelectFamily('oriental')" class="card" id="oriental">
+          <img
+            src="assets/imgs/families section/What is Chai Tea_ Delicious, Creamy, and Rich…But What is It, Exactly_.jpg"
+          />
+          <div class="card-container">
+            <p>oriental</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cards-container row">
+      <div class="our-card col-md-6">
+        <div (click)="onSelectFamily('fresh')" class="card" id="fresh">
+          <img src="assets/imgs/families section/fresh.jpg" />
+          <div class="card-container">
+            <p>fresh</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-6">
+        <div (click)="onSelectFamily('woody')" class="card" id="woody">
+          <img
+            src="assets/imgs/families section/Photo by Tijana Drndarski on Unsplash.jpg"
+          />
+          <div class="card-container">
+            <p>woody</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="selectedFamily === 'floral'">
+  <app-floral (accordsSelected)="onAccordsSelected($event)"></app-floral>
+</div>
+<div *ngIf="selectedFamily === 'woody'">
+  <app-woody (accordsSelected)="onAccordsSelected($event)"></app-woody>
+</div>
+<div *ngIf="selectedFamily === 'oriental'">
+  <app-oriental (accordsSelected)="onAccordsSelected($event)"></app-oriental>
+</div>
+<div *ngIf="selectedFamily === 'fresh'">
+  <app-fresh (accordsSelected)="onAccordsSelected($event)"></app-fresh>
+</div> -->
+
+<router-outlet></router-outlet>

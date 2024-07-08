@@ -1,0 +1,48 @@
+form {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 0;
+}
+
+.form-control {
+  width: 100vw;
+  font-size: 2rem;
+  line-height: 2;
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid #ccd4da;
+  border-radius: 0;
+  text-align: center;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: inherit;
+  border-color: unset;
+  outline: 0;
+  box-shadow: none;
+}
+img {
+  max-width: 90%;
+  padding-top: 10px;
+}
+.product-container {
+  max-height: 600px; /* Adjust the height as needed */
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding: 10px;
+}
+.product-card {
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.product-card:hover {
+  background-color: #eceff3;
+}
+.product-card h1 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.product-card p {
+  font-size: 13px;
+  font-weight: 400;
+}

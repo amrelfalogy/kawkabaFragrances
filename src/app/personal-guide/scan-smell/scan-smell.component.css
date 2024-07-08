@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  margin-top: 65px;
+  background-color: black;
+  color: aliceblue;
+}
+.header-content h1 {
+  padding: 21% 0 7%;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-left: 85px;
+  margin-left: 84px;
+  color: #bd973b;
+  text-transform: uppercase;
+}
+.header-content p {
+  margin-left: 85px;
+  font-size: 1.6rem;
+}
+.iperfume-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1 {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.subtitle {
+  text-align: start;
+  margin: 85px 0 24px;
+}
+img {
+  max-width: 90%;
+}
+
+.subtitle p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.sample {
+  font-size: 19px;
+  margin: 40px 0px 20px;
+  font-weight: 700;
+}
+
+.mybtns {
+  bottom: 5px;
+  width: -webkit-fill-available;
+}
+
+.btn {
+  display: flex;
+  border: none;
+  cursor: unset;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.mybtn {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 45px;
+  width: 188px;
+  padding: 10px 15px;
+  color: #faf9f8;
+  font-size: 13px;
+  font-weight: 400;
+  background-color: black;
+}
+.mybtn:hover {
+  background-color: rgb(28 28 28);
+  color: #faf9f8;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.mybtns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+.gallery-item-inner {
+  align-items: flex-start;
+  display: flex;
+}
+.mybtns .col-md-6 {
+  padding-left: 0;
+}
+.mybtns .btn {
+  padding-left: 0;
+}

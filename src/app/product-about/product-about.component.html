@@ -1,0 +1,95 @@
+<div class="tailored">
+  <div class="header row">
+    <div class="col-md-7" style="height: 100%">
+      <img
+        src="assets/imgs/WhatsApp Image 2024-01-19 at 19.23.22.jpeg"
+        style="max-width: 100%"
+      />
+    </div>
+    <div class="col-md-5">
+      <div class="header-title">
+        <h1>
+          My tailored <br />
+          Selection
+        </h1>
+      </div>
+      <div class="more-about" *ngIf="product">
+        <h1>
+          More About <span>{{ product.name }}</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <!-- <a [routerLink]="['/product-about', product.index]">...</a> -->
+
+    <div class="row" *ngIf="product">
+      <div class="col-md-8">
+        <div class="product-img">
+          <img src="{{ product.image }}" alt="{{ product.name }}" />
+          <span *ngIf="!product.image">Image not available</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-content">
+          <div id="company">
+            <span> {{ product.company }}</span>
+          </div>
+          <h1>{{ product.name }}</h1>
+          <div id="gender">
+            <span>{{ product.for_gender }}</span>
+          </div>
+          <div class="rating">
+            <span>
+              <div style="display: inline-block; font-size: 15px">
+                <fa-icon [icon]="faStar" style="color: #e7c409"></fa-icon>
+              </div>
+              {{ product.rating }}</span
+            >
+            <p id="number-votes">({{ product.number_votes }})</p>
+          </div>
+          <p id="priceDisplay">Price: {{ defaultPrice | currency : "LE" }}</p>
+          <div class="size">
+            <p>Size:</p>
+            <!-- <div *ngIf="product">
+              <select
+                id="sizeSelector"
+                #sizeSelect
+                (change)="onSelectSize(sizeSelect.value)"
+              >
+                <option value="50ml">50ml</option>
+                <option value="60ml">60ml</option>
+                <option value="100ml">100ml</option>
+              </select>
+            </div> -->
+            <div class="size-value">60ml</div>
+          </div>
+          <div class="btn">
+            <button class="mybtn" (click)="addToCart()">add to cart</button>
+          </div>
+          <hr class="line" />
+          <div
+            class="description"
+            [ngClass]="{
+              'margin-small': isDescriptionTruncated,
+              'margin-large': !isDescriptionTruncated
+            }"
+          >
+            <p>Fragrance notes and description</p>
+            <P
+              id="description"
+              [ngClass]="{ truncated: !isDescriptionTruncated }"
+            >
+              {{ product.description }}
+            </P>
+            <div class="toggleBtn">
+              <button class="myToggle" (click)="toggleDescription()">
+                {{ isDescriptionTruncated ? "See More" : "See Less" }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

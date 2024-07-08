@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="search col-md-12">
+    <form>
+      <input
+        #query
+        (keyup)="filter(query.value)"
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search for a Perfume"
+        aria-label="Search"
+      />
+    </form>
+  </div>
+</div>
+<div class="container">
+  <div class="product-container row">
+    <div
+      class="product-card col-md-2"
+      (click)="onCloseClick()"
+      *ngFor="let p of filteredProducts"
+    >
+      <a [routerLink]="['/products', p._id]" routerLinkActive="active">
+        <img src="{{ p.image }}" alt="" />
+      </a>
+      <p style="margin: 10px 0 4px">{{ p.company }}</p>
+      <h1>{{ p.name }}</h1>
+      <p>{{ p.for_gender }}</p>
+    </div>
+  </div>
+</div>

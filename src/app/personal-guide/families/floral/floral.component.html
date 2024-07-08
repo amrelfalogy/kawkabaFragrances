@@ -1,0 +1,111 @@
+<div class="floral">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title mb-30" id="product">
+          <span>5/5</span>
+          <h1 class="subtitle">with a touch of</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-container row" id="first-container">
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('fruity')"
+          [class.selected]="selectedAccords.includes('fruity')"
+          class="card"
+          id="summer"
+        >
+          <img src="assets/imgs/Floral/fruity.jpg" />
+          <div class="card-container">
+            <p>fruity</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('sweet')"
+          [class.selected]="selectedAccords.includes('sweet')"
+          class="card"
+          id="winter"
+        >
+          <img src="assets/imgs/Floral/sweet.jpg" />
+          <div class="card-container">
+            <p>sweet</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('white floral')"
+          [class.selected]="selectedAccords.includes('white floral')"
+          class="card"
+          id="summer"
+        >
+          <img src="assets/imgs/Floral/white floral.jpg" />
+          <div class="card-container">
+            <p>white floral</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('rose')"
+          [class.selected]="selectedAccords.includes('rose')"
+          class="card"
+          id="rose"
+        >
+          <img src="assets/imgs/Floral/rose.jpg" />
+          <div class="card-container">
+            <p>rose</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cards-container row">
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('lavander')"
+          [class.selected]="selectedAccords.includes('lavander')"
+          class="card"
+          id="lavander"
+        >
+          <img src="assets/imgs/Floral/lavander.jpg" />
+          <div class="card-container">
+            <p>lavander</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('powdery')"
+          [class.selected]="selectedAccords.includes('powdery')"
+          class="card"
+          id="powdery"
+        >
+          <img src="assets/imgs/Floral/powdery.jpg" />
+          <div class="card-container">
+            <p>powdery</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-3">
+        <div
+          (click)="onToggleAccord('floral')"
+          [class.selected]="selectedAccords.includes('floral')"
+          class="card"
+          id="floral2"
+        >
+          <img src="assets/imgs/Floral/florall.jpg" />
+          <div class="card-container">
+            <p>floral</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button (click)="onSubmitAccords()" class="mybtn">next</button>
+    </div>
+  </div>
+</div>

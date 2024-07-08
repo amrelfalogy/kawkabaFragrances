@@ -1,0 +1,125 @@
+.cart-container {
+  position: fixed; /* Fixed positioning to stay over content */
+  top: 0;
+  right: 0;
+  width: 300px;
+  background-color: #fff;
+  display: none;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+}
+.cart-container.isVisible {
+  display: block;
+  transform: translateX(0);
+}
+.is-visible {
+  display: block;
+}
+.is-hidden {
+  display: none;
+}
+.cart-content,
+.container {
+  height: 100vh;
+}
+.cart-title {
+  display: flex;
+  padding-top: 10px;
+}
+.cart-title h1 {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.cart-title a {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.subtitle {
+  position: fixed;
+  top: 30%;
+  display: flex;
+  justify-content: center;
+  width: 28vw;
+}
+.subtitle h1 {
+  font-size: 58px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.mybtns {
+  position: fixed;
+  bottom: 5px;
+  width: -webkit-fill-available;
+}
+
+.btn {
+  display: flex;
+  border: none;
+  cursor: unset;
+  justify-content: center;
+  position: relative;
+}
+
+.mybtn {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  height: 50px;
+  width: 240px;
+  padding: 10px 15px;
+  color: rgb(2, 2, 2);
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid rgb(2, 2, 2);
+  background-color: inherit;
+}
+.mybtn:hover {
+  background-color: rgb(2, 2, 2);
+  color: #faf9f8;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+#check {
+  background-color: rgb(2, 2, 2);
+  color: #faf9f8;
+  border: none;
+}
+
+.item-img img {
+  max-width: 100%;
+}
+.item-content {
+  padding: 10px 0 0 30px;
+}
+.item-content h1 {
+  font-size: 20px;
+}
+.item-content p {
+  font-size: 14px;
+}
+
+.itemBtn {
+  border: none;
+  background-color: rgb(2, 2, 2);
+  color: #faf9f8;
+  width: 75px;
+  height: 28px;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.quantityBtns {
+  margin-bottom: 15px;
+}
+
+.quantityBtns button {
+  height: 21px;
+  width: 21px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0px 5px;
+  border: 1px solid #0000005c;
+  background-color: inherit;
+}

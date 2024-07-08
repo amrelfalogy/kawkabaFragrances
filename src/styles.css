@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+/* .light{
+    --mainColor: #dfa63e;
+    --hoverColor: #a67a44;
+    --backgroundColor: #f1f8fc;
+    --darkOne: #312f3a;
+    --darkTwo: #45424b;
+    --lightOne: #3b3e40;
+    --lightTwo: #5e523b;
+}
+.dark{
+    --mainColor: #dfa63e;
+    --hoverColor: #a67a44;
+    --backgroundColor: #141a1d;
+    --darkOne: #fff8cd;
+    --darkTwo: #ffffff;
+    --lightOne: #ccc;
+    --lightTwo: #fff7e9; 
+}
+.dark .logo img {
+    filter: invert(1);
+} */
+html,
+body {
+  height: 100%;
+}
+body {
+  color: #141a1d;
+  background-color: white;
+  overflow-x: hidden;
+}
+h1 {
+  font-family: inherit;
+}
+p,
+h3,
+h4,
+h5 {
+  font-family: "Nunito", sans-serif;
+  font-family: "Vollkorn", serif;
+  font-family: "Wix Madefor Text", sans-serif;
+}
+/* @font-face {
+  font-family: "Futura LT";
+  src: url("/assets/fonts/FuturaLT-Regular.woff2") format("woff2"),
+    url("/assets/fonts/FuturaLT-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Futura LT", sans-serif;
+} */

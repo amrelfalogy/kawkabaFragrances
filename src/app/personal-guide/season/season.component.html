@@ -1,0 +1,74 @@
+<div class="season">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title mb-30" id="product">
+          <span>3/5</span>
+          <h1 class="subtitle">wich season do you want</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-container row" id="first-container">
+      <div class="our-card col-md-6">
+        <div
+          (click)="onToggleSeason('summer')"
+          [class.selected]="selectedSeasons.includes('summer')"
+          class="card"
+          id="summer"
+        >
+          <img src="assets/imgs/season/summer.jpg" />
+          <div class="card-container">
+            <p>summer</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-6">
+        <div
+          (click)="onToggleSeason('winter')"
+          [class.selected]="selectedSeasons.includes('winter')"
+          class="card"
+          id="winter"
+        >
+          <img src="assets/imgs/season/winter.jpg" />
+          <div class="card-container">
+            <p>winter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cards-container row">
+      <div class="our-card col-md-6">
+        <div
+          (click)="onToggleSeason('autumn')"
+          [class.selected]="selectedSeasons.includes('autumn')"
+          class="card"
+          id="autumn"
+        >
+          <img src="assets/imgs/season/fall.jpg" />
+          <div class="card-container">
+            <p>autumn</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-6">
+        <div
+          (click)="onToggleSeason('spring')"
+          [class.selected]="selectedSeasons.includes('spring')"
+          class="card"
+          id="spring"
+        >
+          <img src="assets/imgs/season/spring2.jpg" />
+          <div class="card-container">
+            <p>spring</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn">
+      <button (click)="onSubmitSeasons(selectedSeasons)" class="mybtn">
+        next
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="gender">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title mb-30" id="product">
+          <span>2/5</span>
+          <h1 class="subtitle">wich gender are you looking for</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards-container row">
+      <div class="our-card col-md-6">
+        <div
+          (click)="onSelectGender('men')"
+          [class.selected]="selectedGender === 'men'"
+          class="card"
+          id="for-men"
+        >
+          <img src="assets/imgs/formen.jpg" />
+          <div class="card-container">
+            <p>for him</p>
+          </div>
+        </div>
+      </div>
+      <div class="our-card col-md-6">
+        <div
+          (click)="onSelectGender('women')"
+          [class.selected]="selectedGender === 'women'"
+          class="card"
+          id="for-women"
+        >
+          <img src="assets/imgs/forher.jpg" />
+          <div class="card-container">
+            <p>for her</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

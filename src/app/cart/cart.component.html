@@ -1,0 +1,89 @@
+<div
+  class="cart-content"
+  [ngClass]="{ 'is-visible': !isVisible, 'is-hidden': isVisible }"
+>
+  <div class="container">
+    <div class="cart-title row">
+      <div class="col-sm-6">
+        <h1>Your Cart</h1>
+      </div>
+      <div
+        class="col-sm-6"
+        (click)="toggleVisibility()"
+        style="
+          display: inline-block;
+          padding-right: 12px;
+          font-size: 22px;
+          cursor: pointer;
+        "
+      >
+        <a> <fa-icon [icon]="faXmark" style="color: #20282c"></fa-icon></a>
+      </div>
+      <hr class="line" />
+    </div>
+    <div class="row" style="overflow-y: auto">
+      <div class="col" *ngIf="cartItems.length > 0">
+        <ul style="list-style: none" *ngFor="let item of cartItems">
+          <li style="display: flex">
+            <div class="item-img col-sm-3">
+              <img src="{{ item.image }}" alt="{{ item.name }}" />
+            </div>
+            <div class="item-content col-sm-9">
+              <h1>{{ item.name }}</h1>
+              <p>{{ 300 * item.quantity | currency }}</p>
+              <div class="quantityBtns">
+                <button (click)="decreaseQuantity(item)">-</button>
+                <span>{{ item.quantity }}</span>
+                <button (click)="increaseQuantity(item)">+</button>
+              </div>
+              <button class="itemBtn" (click)="removeFromCart(item._id)">
+                Remove
+              </button>
+            </div>
+          </li>
+          <hr class="line" style="width: 90%" />
+        </ul>
+        <!-- <button (click)="clearCart()">Clear Cart</button> -->
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="subtitle">
+          <h1 *ngIf="cartItems.length === 0">
+            Your cart <br />
+            <span>is</span> empty.
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="mybtns row">
+      <div class="col-sm-12">
+        <div class="btn">
+          <button
+            (click)="toggleVisibility()"
+            class="mybtn"
+            type="submit"
+            routerLink="/home"
+          >
+            Back to Shipping
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="btn">
+          <button
+            (click)="toggleVisibility()"
+            class="mybtn"
+            id="check"
+            type="submit"
+            routerLink="/checkout"
+            *ngIf="cartItems.length > 0"
+          >
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

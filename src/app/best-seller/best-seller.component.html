@@ -1,0 +1,27 @@
+<div class="best-seller">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="title mb-30">
+        <span>Best Seller</span>
+        <h1>Loved by everyone</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2" *ngFor="let product of bestSeller">
+        <div class="product-card">
+          <a
+            [routerLink]="['/products', product._id]"
+            routerLinkActive="active"
+          >
+            <img src="{{ product.image }}" alt="{{ product.name }}" />
+          </a>
+          <p style="margin: 10px 0 4px">{{ product.company }}</p>
+          <h1>{{ product.name }}</h1>
+          <p>{{ product.for_gender }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

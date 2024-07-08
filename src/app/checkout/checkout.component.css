@@ -1,0 +1,23 @@
+.checkout {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  color: rgb(14, 14, 14);
+}
+.col-md-12 {
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.content {
+  text-align: center;
+  align-items: center;
+}
+h1 {
+  font-size: 71px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 200;
+}

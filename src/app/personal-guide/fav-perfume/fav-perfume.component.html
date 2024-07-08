@@ -1,0 +1,70 @@
+<div class="fav-perfume">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title mb-30" id="product">
+          <!-- <span>1/6</span> -->
+          <h1 class="subtitle">do you have a favourite fragrance?</h1>
+          <p>Add one and get collection similar to your favourite</p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="search">
+          <form (ngSubmit)="searchPerfume()">
+            <input
+              (keyup)="searchPerfume()"
+              class="form-control mr-sm-2"
+              type="search"
+              [(ngModel)]="perfumeName"
+              name="perfumeName"
+              placeholder="Find Your Favourite Perfume"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isLoading" class="d-flex justify-content-center my-3">
+      <div
+        class="spinner-border"
+        role="status"
+        style="color: rgb(29, 29, 29); margin: 50px"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div
+      *ngIf="!isLoading && filteredProducts.length > 0"
+      class="product-container row mt-4"
+    >
+      <div class="product-card col-md-3" *ngFor="let p of filteredProducts">
+        <div (click)="viewRecommendations(p)">
+          <img src="{{ p.image }}" alt="{{ p.name }}" />
+          <p>{{ p.company }}</p>
+          <h5>{{ p.name }}</h5>
+          <p>{{ p.for_gender }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="skip-section">
+          <p>Don't have a favourite fragrance!</p>
+          <p id="description">get your personal guide</p>
+          <div class="btn">
+            <button
+              class="mybtn"
+              type="submit"
+              routerLink="../../personal-guide"
+            >
+              my personal guide
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
