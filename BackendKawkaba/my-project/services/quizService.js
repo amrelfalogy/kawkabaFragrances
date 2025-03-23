@@ -1,24 +1,31 @@
 // eslint-disable-next-line no-unused-vars
 const fs = require("fs");
-const products = require("../utils/Data/products.json");
+const Product = require("../models/productModel"); // Import the Product model
 
 function findMatches(products, searchGender, searchSeasons, searchMain) {
   return products.filter((product) => {
     const matchGender =
       searchGender.length === 0 ||
       (product.for_gender &&
-        searchGender.some((gender) =>
-          product.for_gender.toLowerCase().includes(gender.toLowerCase()),
-        ));
+        searchGender.some((gender) => {
+          const formattedGender = product.for_gender.toLowerCase().trim();
+          return (
+            formattedGender === `for ${gender.toLowerCase()}` ||
+            formattedGender === "for women and men"
+          );
+        }));
+
     const matchSeasons =
       searchSeasons.length === 0 ||
       (product.season &&
         searchSeasons.some((season) => product.season.includes(season)));
+
     const matchMain =
       searchMain.length === 0 ||
       (product.main_accords &&
         Array.isArray(product.main_accords) &&
         searchMain.some((accord) => product.main_accords.includes(accord)));
+
     return matchGender && matchSeasons && matchMain;
   });
 }
@@ -35,16 +42,28 @@ function rankProducts(products, searchMain) {
   });
 }
 
-function getRecommendations(gender, seasons, mainAccords) {
-  const searchGender = gender ? [gender] : [];
-  const searchSeasons = seasons || [];
-  const searchMain = mainAccords || [];
+async function getRecommendations(gender, seasons, mainAccords) {
+  try {
+    // Fetch all products from MongoDB
+    const allProducts = await Product.find();
 
-  const result = findMatches(products, searchGender, searchSeasons, searchMain);
-  const rankedProducts = rankProducts(result, searchMain);
+    // Find matches based on gender, seasons, and accords
+    const matchedProducts = findMatches(
+      allProducts,
+      gender,
+      seasons,
+      mainAccords,
+    );
 
-  return rankedProducts.slice(0, 5);
-  // return result.map((product) => product.name);
+    // Rank the matched products
+    const rankedProducts = rankProducts(matchedProducts, mainAccords);
+
+    // Return the top 5 products, including `_id`
+    return rankedProducts.slice(0, 5);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 }
 
 module.exports = {

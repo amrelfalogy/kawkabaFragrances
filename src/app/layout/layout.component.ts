@@ -5,7 +5,14 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { faInstagram, faTelegram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faInstagram,
+  faTelegram,
+  faWhatsapp,
+  faTiktok,
+  faFacebookF,
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { CartDataService } from '../services/cartData.service';
@@ -25,10 +32,20 @@ export class LayoutComponent implements OnInit {
   faCartShopping = faCartShopping;
   faSearch = faSearch;
   isHomePage: boolean = false;
+  isAtTop: boolean = true;
+  isNavbarVisible = true;
+  isNavbarCollapsed: boolean = false;
   cartItemsCount: number = 0;
   isSearchOpen: boolean;
   searchIconElement: HTMLElement;
   currentUser$ = this.authService.currentUser$;
+  faInstagram = faInstagram;
+  faWhatsapp = faWhatsapp;
+  faTelegram = faTelegram;
+  faTiktok = faTiktok;
+  faFacebookF = faFacebookF;
+  faEnvelope = faEnvelope;
+  faPhone = faPhone;
 
   constructor(
     public authService: AuthenticationService,
@@ -36,6 +53,7 @@ export class LayoutComponent implements OnInit {
     private cartService: CartService,
     public cartComponent: CartComponent,
     public searchComponent: SearchComponent,
+    private elRef: ElementRef,
     private router: Router,
     private uiService: UiService
   ) {}
@@ -59,8 +77,21 @@ export class LayoutComponent implements OnInit {
     this.searchComponent.toggleVisibility();
   }
 
+  toggleNavbar(): void {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  }
+
+  collapseNavbar() {
+    const navbarToggle =
+      this.elRef.nativeElement.querySelector('.navbar-collapse');
+    if (navbarToggle && navbarToggle.classList.contains('show')) {
+      navbarToggle.classList.remove('show');
+    }
+  }
+
   onCloseClick(): void {
     this.uiService.hide();
+    this.isNavbarCollapsed = true;
   }
 
   @HostListener('document:click', ['$event'])
@@ -75,17 +106,9 @@ export class LayoutComponent implements OnInit {
 
   @ViewChild('searchContainerRef') searchContainerRef: ElementRef;
 
-  faInstagram = faInstagram;
-  faTelegram = faTelegram;
-
   currentYear = new Date().getFullYear();
 
-  isNavbarVisible = true;
   prevScrollPos = window.pageYOffset;
-  // toggleNavbar() {
-  //   this.isNavbarVisible = !this.isNavbarVisible;
-  // }
-  isAtTop: boolean = true;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

@@ -1,93 +1,55 @@
-.header {
-  display: flex;
-  margin-top: 65px;
-  background-color: black;
-  color: aliceblue;
-}
-.header-content h1 {
-  padding: 21% 0 7%;
-  font-size: 3rem;
-  letter-spacing: 1px;
-  margin-left: 85px;
-  margin-left: 84px;
-  color: #bd973b;
-  text-transform: uppercase;
-}
-.header-content p {
-  margin-left: 85px;
-  font-size: 1.6rem;
-}
-.iperfume-img {
-  display: flex;
-  justify-content: flex-end;
-}
+/* General Styles */
+
 img {
-  max-width: 90%;
+  width: 100%;
+  height: auto;
+  display: block;
 }
+
+.iperfume-img {
+  padding: 0;
+}
+/* Header Image */
+.iperfume-img img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+/* Description Section */
 .container-fluid.desc {
-  background-color: #b9b9b93b;
-  margin: 110px 0;
+  background-color: #f5f5f5;
+  padding: 60px 0;
 }
-.description h1 {
-  margin-bottom: 53px;
-  font-size: 2rem;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 300;
-}
+
 .description-content {
-  margin: 85px 0;
+  padding: 0 20px;
 }
+
+.description h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.description p {
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 15px;
+  color: #292929;
+}
+
 span {
-  font-weight: 800;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 15px;
+  font-weight: bold;
+  color: #bd973b;
 }
-/* .overlay {
-  min-height: 100%;
-  background-color: #020202c4;
-} */
+
+/* Button Styling */
+
 .mybtn {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  height: 55px;
-  width: 252px;
-  padding: 10px 15px;
-  color: #f3bc15;
-  font-size: 15px;
-  font-weight: 500;
-  border: 1px solid #f3bc15;
-  background-color: inherit;
-  margin-top: 25px;
-}
-.mybtn:hover {
-  background-color: #eeac34;
-  color: white;
-  border: none;
   transition: all 0.3s ease-in-out;
-}
-.personal-guide {
-  margin: 100px 0 0;
-}
-.guide-content {
-  padding: 0 45px 0 0;
-}
-.guide-content h1 {
-  text-transform: uppercase;
-  margin-bottom: 40px;
-}
-.guide-content p {
-  font-size: 20px;
-}
-.guide-img {
-  display: flex;
-  justify-content: flex-end;
-}
-.guide-img img {
-  max-width: 85%;
-}
-.guide-content .mybtn {
+  cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 3px;
   height: 47px;
@@ -100,58 +62,60 @@ span {
   background-color: inherit;
   margin-top: 25px;
 }
-.guide-content .mybtn:hover {
+
+.mybtn:hover {
   background-color: black;
   color: white;
   border: none;
-  transition: all 0.3s ease-in-out;
-}
-.parallax {
-  position: relative;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 400px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 175px 0;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-.parallax .content.container {
-  display: grid;
-}
-.parallax .container h3 {
-  font-size: 15px;
-  font-family: monospace;
-  letter-spacing: 6px;
-  font-family: serif;
-  color: #f3bc15;
-  z-index: 5;
-  text-transform: uppercase;
-}
-.parallax .container h1 {
-  font-size: 26;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: white;
-  z-index: 5;
 }
 
-.parallax .container .btn {
-  z-index: 5;
-  display: flex;
-  padding: 0;
-}
+/* Personal Guide & Recommendation Sections */
+.personal-guide,
 .recommend {
-  margin-bottom: 130px;
+  margin: 80px 0;
+}
+
+.guide-content {
+  padding: 30px 20px 10px;
+  text-align: left;
+}
+
+.guide-content h1 {
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.guide-content p {
+  font-size: 1.1rem;
+}
+
+.guide-img {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.guide-img img {
+  max-width: 90%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guide-img {
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .guide-content {
+    text-align: start;
+  }
+
+  .guide-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .description h1,
+  .description p {
+    text-align: left;
+  }
 }

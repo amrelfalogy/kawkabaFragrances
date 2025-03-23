@@ -26,7 +26,7 @@ products.forEach((product) => {
 
   // Ensure price field is present
   if (!product.price) {
-    product.price = 300; // Default value if price is missing
+    product.price = 350; // Default value if price is missing
   }
 
   //  New arrival
@@ -37,6 +37,11 @@ products.forEach((product) => {
   // Best seller
   if (!product.isBestSeller) {
     product.isBestSeller = false; // Default value if best seller is missing
+  }
+
+  // is Available
+  if (!product.isAvailable) {
+    product.isAvailable = true; // Default value if Availability  is missing
   }
 });
 

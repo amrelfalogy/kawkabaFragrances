@@ -41,7 +41,8 @@ export class PersonalGuideComponent {
     if (this.validateSelections(this.userSelections)) {
       this.quizService.getRecommendations(this.userSelections).subscribe({
         next: (result) => {
-          console.log('API Success:', result);
+          console.log('API Response:', JSON.stringify(result, null, 2));
+
           if (result.status === 'success') {
             console.log('API Navigating:', result.data.recommendations);
             this.router

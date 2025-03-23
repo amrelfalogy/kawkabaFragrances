@@ -1,5 +1,5 @@
 .perfume-for {
-  padding-top: 80px;
+  padding: 85px 0;
 }
 
 .title {
@@ -29,7 +29,6 @@ span {
   justify-content: center;
 }
 .our-card {
-  height: 304px;
   width: 42%;
 }
 .card {
@@ -41,7 +40,7 @@ span {
   cursor: pointer;
 }
 .card:hover {
-  border: 3px solid rgb(60, 60, 60);
+  border: 2px solid rgb(60, 60, 60);
 }
 img {
   width: 78%;
@@ -62,8 +61,22 @@ img {
 } */
 
 @media (max-width: 576px) {
+  .perfume-for {
+    height: 100vh !important ;
+  }
+  #title-id {
+    padding-bottom: 20%;
+    padding-top: 20%;
+  }
+  .cards-container {
+    margin: 10% 0%;
+  }
   .cards-container .our-card {
     height: 188px !important ;
+    width: 50%;
+  }
+  h1 {
+    font-size: 1.5rem;
   }
 }
 

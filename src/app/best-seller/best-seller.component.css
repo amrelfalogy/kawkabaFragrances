@@ -51,7 +51,7 @@ button {
 .title {
   margin: auto;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   margin-top: 90px;
 }
 .title span {
@@ -61,23 +61,46 @@ button {
 }
 .title h1 {
   color: black;
-  font-size: 45px;
+  font-size: 2rem;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 img {
-  max-width: 100%;
+  max-width: 65%;
 }
 .product-card {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 .product-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 .product-card h1 {
-  font-size: 20px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.product-card p {
+  font-size: 0.8rem;
+  color: #595959;
+}
+@media (max-width: 1200px) {
+  .product-card h1 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+  }
+}
+@media (max-width: 578px) {
+  .title h1 {
+    font-size: 1.5rem;
+  }
 }

@@ -27,7 +27,6 @@ body {
 body {
   color: #141a1d;
   background-color: white;
-  overflow-x: hidden;
 }
 h1 {
   font-family: inherit;
@@ -40,14 +39,3 @@ h5 {
   font-family: "Vollkorn", serif;
   font-family: "Wix Madefor Text", sans-serif;
 }
-/* @font-face {
-  font-family: "Futura LT";
-  src: url("/assets/fonts/FuturaLT-Regular.woff2") format("woff2"),
-    url("/assets/fonts/FuturaLT-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-  font-family: "Futura LT", sans-serif;
-} */

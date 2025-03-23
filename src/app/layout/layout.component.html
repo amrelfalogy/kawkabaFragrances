@@ -1,9 +1,10 @@
 <nav
   class="navbar navbar-expand-lg navbar-light fixed-top"
   [ngClass]="{
-    'navbar-light': !isAtTop || (!isHomePage && isAtTop),
+    'navbar-light': !isAtTop || (!isHomePage && isAtTop) || !isNavbarCollapsed,
     'navbar-hidden': !isNavbarVisible,
-    'navbar-transparent': isAtTop && isHomePage
+    'navbar-transparent': isAtTop && isHomePage && !isNavbarCollapsed,
+    'navbar-collapsed-bg': isNavbarCollapsed
   }"
 >
   <div class="container">
@@ -15,6 +16,7 @@
     <button
       class="navbar-toggler"
       type="button"
+      (click)="toggleNavbar()"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
@@ -34,58 +36,43 @@
             class="nav-link"
             routerLink="home"
             [routerLinkActive]="['active']"
-            (click)="onCloseClick()"
+            (click)="collapseNavbar()"
             >HOME</a
           >
         </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            (click)="onCloseClick()"
-            class="nav-link"
-            routerLink="personal-guide/scent-finder"
-            [routerLinkActive]="['active']"
-            >FIND MY SCENT</a
-          >
-          <!-- <div class="dropdown-container">
-            <div class="container">
-              <div class="row">
-                <div class="dropdown-content col-md-6">
-                  <h1>FIND MY SCENT</h1>
-                  <a routerLink="" (click)="onCloseClick()"
-                    >Your Personal Fragrance Guide</a
-                  >
-                  <a routerLink="" (click)="onCloseClick()">Recommendation</a>
-                  <a routerLink="" (click)="onCloseClick()"
-                    >Scan & Smell for Shop</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </li>
-
         <li class="nav-item">
           <a
-            (click)="onCloseClick()"
-            class="nav-link"
-            routerLink="collection"
-            [routerLinkActive]="['active']"
-            >COLLECTION
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            (click)="onCloseClick()"
+            (click)="collapseNavbar()"
             class="nav-link"
             routerLink="/about"
             [routerLinkActive]="['active']"
             >ABOUT
           </a>
         </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            (click)="collapseNavbar()"
+            class="nav-link"
+            routerLink="personal-guide/perfume-for"
+            [routerLinkActive]="['active']"
+            >FIND MY SCENT</a
+          >
+        </li>
+
         <li class="nav-item">
           <a
-            (click)="onCloseClick()"
+            (click)="collapseNavbar()"
+            class="nav-link"
+            routerLink="collection"
+            [routerLinkActive]="['active']"
+            >COLLECTION
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            (click)="collapseNavbar()"
             class="nav-link"
             routerLink="contact"
             [routerLinkActive]="['active']"
@@ -110,7 +97,7 @@
       >
         <a> <fa-icon [icon]="faSearch" style="color: #20282c"></fa-icon></a>
       </div>
-      <div
+      <!-- <div
         style="
           display: inline-block;
           padding: 10px;
@@ -130,7 +117,7 @@
       <app-cart
         *ngIf="cartComponent.isVisible"
         class="cart-container"
-      ></app-cart>
+      ></app-cart> -->
 
       <app-search
         *ngIf="searchComponent.isVisible"
@@ -167,61 +154,125 @@
 
 <router-outlet></router-outlet>
 
-<!-- <div class="row">
-    <div class="col">
-      <div class="bottom-area">
-          <button class="toggle-btn">
-              <i class="fa-regular fa-moon"></i>  
-              <i class="fa-regular fa-sun"></i>
-          </button>
-      </div>
-    </div>
-  </div> -->
-
 <footer>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="title" style="margin-bottom: 90px">
+        <div
+          class="title"
+          style="margin-bottom: 60px; text-transform: uppercase"
+        >
           <span>contact us</span>
           <h1>Let's work together</h1>
         </div>
       </div>
       <div class="row">
-        <div class="footer-content col-md-9" style="margin-top: 10px">
-          <h3
-            class="footer-title mb-5"
-            style="font-weight: bold; text-transform: uppercase"
-          >
-            Git in touch
-          </h3>
-          <p style="margin-bottom: 0px"><span>Phone:</span>01066041002</p>
-          <p style="margin-bottom: 0px">
-            <span>Follow Us</span> for exclusive and new updates:
-          </p>
+        <!-- Get in Touch Column -->
+        <div class="col-sm-3">
+          <h3 class="footer-title">Get in touch</h3>
           <div class="footer-links">
-            <div
-              style="
-                display: inline-block;
-                padding: 0 10px 0 0;
-                font-size: 22px;
-              "
+            <!-- Email -->
+            <a
+              style="text-decoration: none; color: inherit"
+              class="contact-item"
+              href="mailto:kawkabafragrances@gmail.com"
             >
-              <a
-                href="https://instagram.com/kawkabafragrances?utm_medium=copy_link"
-              >
-                <fa-icon [icon]="faInstagram" style="color: #c49e39"></fa-icon>
-              </a>
-            </div>
-            <div style="display: inline-block; font-size: 22px">
-              <a href="https://t.me/kawkabafragrances">
-                <fa-icon [icon]="faTelegram" style="color: #c49e39"></fa-icon>
-              </a>
-            </div>
+              <fa-icon [icon]="faEnvelope" class="contact-icon"></fa-icon>
+              <span>info&#64;kawkabafragrances.com</span>
+            </a>
+
+            <!-- Call -->
+            <a
+              style="text-decoration: none; color: inherit"
+              class="contact-item"
+              href="tel:01016852128"
+            >
+              <fa-icon [icon]="faPhone" class="contact-icon"></fa-icon>
+              <span>01066041002</span>
+            </a>
+            <!-- Whatsapp -->
+            <a
+              style="text-decoration: none; color: inherit"
+              class="contact-item"
+              href="https://wa.me/01016852128"
+            >
+              <fa-icon
+                [icon]="faWhatsapp"
+                class="whatsapp-icon"
+                style="font-size: 1.2rem"
+              ></fa-icon>
+              <a href="https://wa.me/01016852128"> 01016852128 </a>
+            </a>
           </div>
         </div>
-        <div class="footer-img col-md-3">
-          <img src="assets/imgs/vectorpaint 22.png" />
+
+        <!-- Information Column -->
+        <div class="col-sm-3">
+          <h3 class="footer-title">Information</h3>
+          <ul class="footer-links">
+            <li>
+              <a routerLink="about">About Us</a>
+            </li>
+            <li>
+              <a routerLink="collection">Collection</a>
+            </li>
+            <li>
+              <a routerLink="personal-guide/perfume-for"> Find My Scent </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Support Column -->
+        <div class="col-sm-3">
+          <h3 class="footer-title">Support</h3>
+          <ul class="footer-links">
+            <li>FAQ</li>
+            <li>Terms & Conditions</li>
+            <li>Return Policy</li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="col-sm-3">
+          <h3 class="footer-title">Social Media</h3>
+          <ul class="social-icons">
+            <li>
+              <a
+                href="https://www.facebook.com/kawkabafragrances"
+                target="_blank"
+                class="social-icon facebook"
+              >
+                <fa-icon [icon]="faFacebookF"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/kawkabafragrances?igsh=Z25od2lmYTE1YmF0"
+                target="_blank"
+                class="social-icon instagram"
+              >
+                <fa-icon [icon]="faInstagram"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://t.me/kawkabafragrances"
+                target="_blank"
+                class="social-icon telegram"
+              >
+                <fa-icon [icon]="faTelegram"></fa-icon>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.tiktok.com/@kawkaba_fragrances?_t=ZS-8udgGMi70sh&_r=1"
+                target="_blank"
+                class="social-icon tiktok"
+              >
+                <fa-icon [icon]="faTiktok"></fa-icon>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

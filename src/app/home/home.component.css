@@ -1,11 +1,12 @@
 .home-page {
   overflow-x: hidden;
 }
-.header {
+/* .header {
   height: 740px;
-}
+} */
 .header .container {
   padding-left: 88px;
+  padding-top: 60px;
 }
 .header .row .col-md-7 {
   display: grid;
@@ -13,7 +14,7 @@
   justify-content: center;
 }
 .header .content {
-  margin-top: 100px;
+  margin-top: 170px;
 }
 .header .content button {
   width: 197px;
@@ -40,6 +41,37 @@ h1 {
 .header-img img {
   width: 139%;
   transform: translate(-1%, 40px);
+}
+@media (max-width: 992px) {
+  .col-lg-7 {
+    order: 2;
+  }
+  .col-lg-5 {
+    order: 1;
+  }
+
+  .header .container {
+    padding-left: 25px;
+    text-align: center;
+  }
+  .header .content {
+    margin-top: 60px;
+  }
+  /* .header .title h1 {
+    font-size: 1.5rem;
+  } */
+  .header .sub-title {
+    display: none;
+  }
+
+  .header .mybtn {
+    width: 142px;
+    height: 46px;
+  }
+  .header-img img {
+    width: 97%;
+    transform: translate(9%, 110px);
+  }
 }
 
 /* about */
@@ -198,7 +230,7 @@ h1 {
 .parallax {
   position: relative;
   background-attachment: fixed;
-  background-position: center;
+  /* background-position: center; */
   background-repeat: no-repeat;
   background-size: cover;
   height: 400px;
@@ -214,12 +246,13 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 .parallax .content.container {
   display: grid;
 }
+
 .parallax .container h3 {
   font-size: 15px;
   font-family: monospace;
@@ -231,7 +264,7 @@ h1 {
 }
 .parallax .container h1 {
   font-size: 26;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: white;
   z-index: 5;
@@ -263,6 +296,26 @@ h1 {
 }
 .btn {
   border: none;
+}
+@media (max-width: 768px) {
+  .parallax {
+    margin-bottom: 40px;
+  }
+  .content.container {
+    text-align: center;
+  }
+  .content.container h1 {
+    font-size: 26px;
+  }
+  .content.container .btn {
+    justify-content: center;
+  }
+  .content.container .btn .mybtn {
+    height: 47px;
+    width: 169px;
+    margin-top: 9px;
+    font-size: 13px;
+  }
 }
 .new-arrival .title span {
   font-family: monospace;

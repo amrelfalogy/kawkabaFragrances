@@ -3,6 +3,16 @@
     <div class="col-md-6">
       <div class="card" [ngClass]="formStatus">
         <div class="text-center">
+          <p
+            style="
+              margin-bottom: 20px;
+              color: red;
+              font-size: 1rem;
+              letter-spacing: 1;
+            "
+          >
+            Under maintenance .. Coming Soon
+          </p>
           <h2 style="margin-bottom: 30px">Sign Up a New User</h2>
         </div>
         <form [formGroup]="signupForm" (ngSubmit)="submit()">

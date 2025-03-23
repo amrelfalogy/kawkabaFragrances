@@ -1,5 +1,5 @@
-.season {
-  padding-top: 94px;
+.oriental {
+  padding: 94px 0;
 }
 .title {
   text-align: center;
@@ -22,6 +22,7 @@ span {
   padding-top: 10px;
   font-weight: 500;
   font-size: 1.25rem;
+  margin-bottom: 24px;
 }
 #first-container {
   margin: 2% 10%;
@@ -43,10 +44,10 @@ span {
   cursor: pointer;
 }
 .card.selected {
-  border: 3px solid rgb(60, 60, 60);
+  border: 2px solid rgb(60, 60, 60);
 }
 .card:hover {
-  border: 3px solid rgb(60, 60, 60);
+  border: 2px solid rgb(60, 60, 60);
 }
 .card p {
   font-size: 14px;
@@ -55,6 +56,7 @@ img {
   width: 80%;
   height: 84%;
   padding-top: 17px;
+  object-fit: cover;
 }
 .card-container {
   padding-top: 8px;
@@ -85,4 +87,26 @@ img {
   color: white;
   border: none;
   transition: all 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  #first-container {
+    margin: 0% 1% 0;
+  }
+  .our-card {
+    height: 140px;
+    padding-top: 5%;
+    width: 40%;
+  }
+  img {
+    height: 70%;
+  }
+  .card-container p {
+    font-size: 12px;
+  }
+  .card-container {
+    padding-top: 10px;
+  }
+  .cards-container {
+    margin: 0% 1% 2%;
+  }
 }

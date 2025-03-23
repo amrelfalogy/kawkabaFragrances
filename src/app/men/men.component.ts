@@ -13,6 +13,7 @@ export class MenComponent implements OnInit {
   selectedProduct: any;
   productDetailes: any;
   errorMessage: string;
+  isLoading: boolean = false;
 
   constructor(private service: ProductService, private router: Router) {}
 
@@ -24,14 +25,17 @@ export class MenComponent implements OnInit {
   // }
 
   loadProduct(): void {
+    this.isLoading = true;
     this.service.getProducts().subscribe({
       next: (products) => {
+        this.isLoading = false;
         this.products = products.filter(
           (item: any) => item.for_gender == 'for men'
         );
         console.log('Products loaded:', products);
       },
       error: (err) => {
+        this.isLoading = false;
         console.error('Error retrieving products:', err);
         this.errorMessage = 'Error loading products';
       },

@@ -1,32 +1,179 @@
-.myvideo-header{
-    position: relative;
+/* Hero Section */
+.header {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-image 0.5s ease-in-out;
 }
-.embed-responsive-item{
-    max-width: 100%;
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
-.myvideo{
-    position: relative;
-}
-.myvideo-header .overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.05);
-    z-index: 1;
-}
-.myvideo-header h1{
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-  color: #e2c315;
-  font-size: 4em;
-  font-family: sans-serif;
+
+.header .header-content {
+  display: grid;
   text-align: center;
-  background-color: #00000091;
-  padding: 20px;
+  z-index: 2;
+}
+
+.header-content h1 {
+  font-weight: 700;
+  color: white;
+  font-size: 50px;
+  margin-bottom: 11px;
+  text-transform: uppercase;
+}
+
+.header-content h3 {
+  font-size: 16px;
+  color: #bbb;
+  font-weight: 400;
+}
+.header-content h3 span {
+  color: #f3bc15;
+}
+
+.contact-page {
+  padding: 140px 0;
+}
+
+.contact-info {
+  padding: 0 24px 65px;
+}
+.contact-info p {
+  width: 72%;
+  font-size: 14px;
+  color: #606060;
+}
+@media (max-width: 768px) {
+  .contact-info p {
+    width: 94%;
+  }
+  .contact-page {
+    padding-top: 90px;
+  }
+}
+
+.contact-details {
+  margin-top: 50px;
+  display: flex;
+}
+
+.contact-details .email-container {
+  display: flex;
+  align-items: center;
+}
+.contact-details .phone-container {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 990px) {
+  .phone-container {
+    margin-left: -52px;
+  }
+}
+
+@media (max-width: 576px) {
+  .phone-container {
+    margin-top: 20px;
+  }
+  .whatsapp-container {
+    margin-top: 20px;
+  }
+}
+.contact-details .whatsapp-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  border: 1px solid #696969;
+  text-align: center;
+  font-size: 32px;
+  margin-right: 18px;
+  line-height: 47px;
+}
+.contact-details span {
+  font-size: 26px;
+  color: #525252;
+}
+.whatsapp-icon {
+  color: #525252;
+  font-size: 26px;
+  padding: 0 0 4px 1px;
+  display: block;
+}
+
+.contact-details p,
+a {
+  color: #606060;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.social-media a {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.contact-form {
+  padding: 55px 0;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 27px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 0px;
+  border-bottom: 1px solid #ccc !important;
+  border: none;
+}
+
+.is-invalid {
+  border-color: red;
+  background-color: #f8d7da;
+}
+
+.error-message small {
+  color: red;
+  font-size: 0.875rem;
+}
+
+button.btn {
+  padding: 10px 20px;
+  background-color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

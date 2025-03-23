@@ -12,18 +12,22 @@ export class WomenComponent implements OnInit {
   products: any;
   selectedProduct: any;
   errorMessage: string;
+  isLoading: boolean = false;
 
   constructor(private service: ProductService, private router: Router) {}
 
   loadProduct(): void {
+    this.isLoading = true;
     this.service.getProducts().subscribe({
       next: (products) => {
+        this.isLoading = false;
         this.products = products.filter(
           (item: any) => item.for_gender == 'for women'
         );
         console.log('Products loaded:', products);
       },
       error: (err) => {
+        this.isLoading = false;
         console.error('Error retrieving products:', err);
         this.errorMessage = 'Error loading products';
       },

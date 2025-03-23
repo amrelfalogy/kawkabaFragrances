@@ -26,24 +26,27 @@ export class TailoredSelectionComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       const state = window.history.state;
       console.log('State from history:', state);
+
+      let rawProducts = [];
+
       if (state && state['products']) {
-        this.products = state['products'];
+        rawProducts = state['products'];
         this.recommendationSource = 'Our Specialist';
-        console.log('Products received from history state:', this.products);
       } else if (state && state['recommendations']) {
-        this.products = state['recommendations'];
+        rawProducts = state['recommendations'];
         this.recommendationSource = 'AI Assistant';
-        console.log('Products received from history state:', this.products);
-        console.log('Example Product:', this.products[0]);
       } else {
         console.error('No products found in state.');
       }
 
-      if (this.products) {
-        this.products.forEach((product: any) => {
-          console.log('Product:', product);
-        });
-      }
+      // Filter products where isAvailable is true
+      console.log('Raw Products:', rawProducts);
+      this.products = rawProducts.filter((product: any) => {
+        console.log('Checking Product:', product);
+        console.log('Product ID:', product._id);
+        return product.isAvailable;
+      });
+      console.log('Filtered Products:', this.products);
     });
   }
 
@@ -55,11 +58,12 @@ export class TailoredSelectionComponent implements OnInit {
       console.error('Product is not available to add to cart.');
     }
   }
-  seeMore(productId: string): void {
-    if (productId) {
-      this.router.navigate(['/products', productId]);
+  seeMore(product: any): void {
+    console.log('Navigating to product:', product);
+    if (product && product._id) {
+      this.router.navigate(['/products', product._id]);
     } else {
-      console.error('Product ID is undefined.');
+      console.error('Product ID is undefined:', product);
     }
   }
 }
