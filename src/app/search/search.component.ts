@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  isVisible: boolean = true;
+  isVisible: boolean = false;
+  isLoading = false;
   private visabilitySubscriotion: Subscription;
   faXmark = faXmark;
   subscription: Subscription;
@@ -23,24 +24,28 @@ export class SearchComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private router: Router,
     private uiService: UiService
-  ) {
-    this.subscription = this.uiService.isVisible.subscribe(
+  ) {}
+
+ ngOnInit(): void {
+    this.subscription = this.uiService.searchVisibility.subscribe(
       (visible) => (this.isVisible = visible)
     );
-  }
 
-  ngOnInit(): void {
-    this.subscription = this.productService.getProducts().subscribe({
+    this.productService.getProducts().subscribe({
       next: (products) => {
-        this.products = products; // Only initialize products here
-        console.log('Received products:', products);
+        this.products = products;
+        this.isLoading = false;
       },
-      error: (err) => console.error('Failed to get products', err),
+      error: (err) => {
+        console.error('Failed to get products', err);
+        this.isLoading = false;
+      }
     });
   }
 
-  filter(query: string) {
-    console.log(query);
+filter(query: string) {
+  this.isLoading = true; // Start loading
+  setTimeout(() => {
     if (query) {
       this.filteredProducts = this.products.filter(
         (p) =>
@@ -48,9 +53,11 @@ export class SearchComponent implements OnInit, OnDestroy {
           p.company.toLowerCase().includes(query.toLowerCase())
       );
     } else {
-      this.filteredProducts = []; // Keep empty if no query
+      this.filteredProducts = [];
     }
-  }
+    this.isLoading = false; // Stop loading
+  }, 300); // Simulate a delay for filtering
+}
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -58,7 +65,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   onCloseClick() {
     // this.isVisible = !this.isVisible;
-    this.uiService.hide();
+    this.uiService.hideSearch();
     console.log('onCloseClick called');
   }
 

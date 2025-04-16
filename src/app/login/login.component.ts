@@ -8,7 +8,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private http: HttpClient,
     private router: Router,
-    private toast: HotToastService
   ) {}
 
   ngOnInit(): void {}

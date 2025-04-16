@@ -10,51 +10,64 @@
 
 .cart-container {
   position: fixed;
-  height: calc(100vh-100px);
   top: 0;
   right: 0;
-  /* display: none; */
   width: 400px;
+  height: 100vh;
   background-color: #fff;
   z-index: 999;
-  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%); /* hide by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
 .cart-container.isVisible {
-  display: block;
   transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
+
 
 .search-container {
   position: fixed;
   width: 100vw;
   bottom: 0;
   left: 0;
-  /* transform: translateY(100%); */
-  /* display: none; */
   height: 400px;
   background-color: #fff;
   z-index: 999;
-  transition: transform 0.5s ease-in-out;
+  transform: translateY(100%); /* hide by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .search-container.isVisible {
-  display: block;
   transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
+
+
 .navbar-content.hidden {
   display: none;
 }
 
 .navbar-hidden {
-  display: none;
+  transform: translateY(-100%);
+}
+.navbar:not(.navbar-hidden) {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .fixed-top {
   z-index: 999;
 }
 
 .navbar {
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* .navbar-transparent {
@@ -108,6 +121,44 @@ a.nav-link {
   width: 110px;
   margin-left: -27px;
 }
+
+/* new icon style */
+.nav-icons {
+  font-size: 18px;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon-container {
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-container span {
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: #d7b304;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+@media (max-width: 991.98px) {
+  .nav-icons {
+    justify-content: flex-start !important;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .login-btn {
+    justify-content: flex-start;
+    padding-left: 0px;
+    padding-bottom: 10px;
+  }
+}
+
 
 button.btn.mb-auto {
   justify-content: flex-end;

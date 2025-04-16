@@ -12,7 +12,6 @@ import {
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
-import { HotToastService } from '@ngneat/hot-toast';
 
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -56,7 +55,6 @@ export class SignupComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private authService: AuthenticationService,
-    private toast: HotToastService
   ) {}
 
   ngOnInit(): void {

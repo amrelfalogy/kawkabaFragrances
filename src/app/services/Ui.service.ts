@@ -1,4 +1,4 @@
-// visibility.service.ts
+// ui.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,14 +6,40 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UiService {
-  private _isVisible = new BehaviorSubject<boolean>(false);
-  public readonly isVisible = this._isVisible.asObservable();
+  private cartVisible$ = new BehaviorSubject<boolean>(false);
+  private searchVisible$ = new BehaviorSubject<boolean>(false);
 
-  show(): void {
-    this._isVisible.next(true);
+  // Public Observables
+  cartVisibility = this.cartVisible$.asObservable();
+  searchVisibility = this.searchVisible$.asObservable();
+
+  // Cart controls
+  showCart() {
+    this.hideSearch(); // Ensure only one is open
+    this.cartVisible$.next(true);
   }
 
-  hide(): void {
-    this._isVisible.next(false);
+  hideCart() {
+    this.cartVisible$.next(false);
+  }
+
+  toggleCart() {
+    const current = this.cartVisible$.value;
+    current ? this.hideCart() : this.showCart();
+  }
+
+  // Search controls
+  showSearch() {
+    this.hideCart(); // Ensure only one is open
+    this.searchVisible$.next(true);
+  }
+
+  hideSearch() {
+    this.searchVisible$.next(false);
+  }
+
+  toggleSearch() {
+    const current = this.searchVisible$.value;
+    current ? this.hideSearch() : this.showSearch();
   }
 }

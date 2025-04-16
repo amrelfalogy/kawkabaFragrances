@@ -1,7 +1,4 @@
-<div
-  class="cart-content"
-  [ngClass]="{ 'is-visible': !isVisible, 'is-hidden': isVisible }"
->
+<div class="cart-content is-visible">
   <div class="container">
     <div class="cart-title row">
       <div class="col-sm-6">
@@ -9,7 +6,7 @@
       </div>
       <div
         class="col-sm-6"
-        (click)="toggleVisibility()"
+        (click)="onCloseClick()"
         style="
           display: inline-block;
           padding-right: 12px;
@@ -21,7 +18,7 @@
       </div>
       <hr class="line" />
     </div>
-    <div class="row" style="overflow-y: auto">
+    <div class="row cart-item" >
       <div class="col" *ngIf="cartItems.length > 0">
         <ul style="list-style: none" *ngFor="let item of cartItems">
           <li style="display: flex">
@@ -61,7 +58,7 @@
       <div class="col-sm-12">
         <div class="btn">
           <button
-            (click)="toggleVisibility()"
+            (click)="onCloseClick()"
             class="mybtn"
             type="submit"
             routerLink="/home"
@@ -73,7 +70,7 @@
       <div class="col-sm-12">
         <div class="btn">
           <button
-            (click)="toggleVisibility()"
+            (click)="onCloseClick()"
             class="mybtn"
             id="check"
             type="submit"

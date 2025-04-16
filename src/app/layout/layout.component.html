@@ -8,7 +8,7 @@
   }"
 >
   <div class="container">
-    <div class="logo" style="width: 20%">
+    <div class="logo" style="width: 25%">
       <a class="navbar-brand" routerLink="">
         <img src="assets/imgs/K100mlCopy.png" alt="Kawkaba" />
       </a>
@@ -28,7 +28,8 @@
     <div
       class="collapse navbar-collapse"
       id="navbarNav"
-      style="justify-content: center"
+      style="justify-content: space-between"
+      #navbarCollapse
     >
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -69,83 +70,62 @@
             >COLLECTION
           </a>
         </li>
-
+        
         <li class="nav-item">
           <a
-            (click)="collapseNavbar()"
-            class="nav-link"
-            routerLink="contact"
-            [routerLinkActive]="['active']"
-            >CONTACT
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div
-      class="collapse navbar-collapse"
-      id="nav-icons"
-      style="justify-content: end"
-    >
-      <div
-        style="
-          display: inline-block;
-          padding-right: 10px;
-          font-size: 16px;
-          cursor: pointer;
-        "
-        (click)="onSearchClick()"
-      >
-        <a> <fa-icon [icon]="faSearch" style="color: #20282c"></fa-icon></a>
-      </div>
-      <!-- <div
-        style="
-          display: inline-block;
-          padding: 10px;
-          font-size: 16px;
-          cursor: pointer;
-        "
-        (click)="onCartClick()"
-      >
-        <a>
-          <fa-icon [icon]="faCartShopping" style="color: #20282c"
-            ><span *ngIf="cartItemsCount > 0">{{
-              cartItemsCount
-            }}</span></fa-icon
-          ></a
-        >
+          (click)="collapseNavbar()"
+          class="nav-link"
+          routerLink="contact"
+          [routerLinkActive]="['active']"
+          >CONTACT
+        </a>
+      </li>
+    </ul>
+    <div class="nav-icons d-flex justify-content-lg-end justify-content-start ">
+      <div class="icon-container" (click)="onSearchClick()" #searchToggleRef>
+          <fa-icon [icon]="faSearch" class="nav-icon" style="font-size: 1rem;"></fa-icon>
+        </div>
+        <div class="icon-container" (click)="onCartClick()" #cartToggleRef>
+          <fa-icon [icon]="faCartShopping" class="nav-icon" style="font-size: 1rem">
+            <span *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</span>
+          </fa-icon>
       </div>
       <app-cart
-        *ngIf="cartComponent.isVisible"
-        class="cart-container"
-      ></app-cart> -->
-
+       [ngClass]="{ 'isVisible': isCartVisible }"
+       class="cart-container"
+       #cartContainerRef
+       >
+      </app-cart>
       <app-search
-        *ngIf="searchComponent.isVisible"
-        class="search-container"
-      ></app-search>
-
+      [ngClass]="{ 'isVisible': isSearchVisible }"
+      class="search-container"
+      #searchContainerRef
+      >
+    </app-search>
+    
+    
       <!-- <button class="btn mb-auto" routerLink="../login">Login</button> -->
       <div>
         <ng-container *ngIf="currentUser$ | async as user; else loginButton">
           <button
-            mat-button
-            [matMenuTriggerFor]="userMenu"
-            (click)="$event.stopPropagation()"
-            *ngIf="user?.uid"
+          mat-button
+          [matMenuTriggerFor]="userMenu"
+          (click)="$event.stopPropagation()"
+          *ngIf="user?.uid"
           >
-            <mat-icon>account_circle</mat-icon>
-            {{ user.displayName }}
-            <mat-icon>expand_more</mat-icon>
-          </button>
-        </ng-container>
-        <ng-template #loginButton>
-          <button mat-button routerLink="/login">
-            <mat-icon>login</mat-icon>
+          <mat-icon>account_circle</mat-icon>
+          {{ user.displayName }}
+          <mat-icon>expand_more</mat-icon>
+        </button>
+      </ng-container>
+      <ng-template #loginButton>
+        <button mat-button routerLink="/login" class="login-btn">
             Login
           </button>
         </ng-template>
       </div>
     </div>
+  </div>
   </div>
 </nav>
 <mat-menu #userMenu="matMenu">
@@ -159,13 +139,13 @@
     <div class="row">
       <div class="col-md-12">
         <div
-          class="title"
-          style="margin-bottom: 60px; text-transform: uppercase"
+        class="title"
+        style="margin-bottom: 60px; text-transform: uppercase"
         >
-          <span>contact us</span>
-          <h1>Let's work together</h1>
-        </div>
+        <span>contact us</span>
+        <h1>Let's work together</h1>
       </div>
+    </div>
       <div class="row">
         <!-- Get in Touch Column -->
         <div class="col-sm-3">

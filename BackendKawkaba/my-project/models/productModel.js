@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "The brand of this product is required"],
       minlength: [3, "Too short product brand name"],
-      maxlength: [32, "Too long product brand name"],
+      maxlength: [64, "Too long product brand name"],
     },
     for_gender: {
       type: String,

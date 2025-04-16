@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
@@ -23,12 +24,13 @@ import { SearchComponent } from '../search/search.component';
 import { UiService } from '../services/Ui.service';
 import { CartService } from '../services/cart.service';
 
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, AfterViewInit {
   faCartShopping = faCartShopping;
   faSearch = faSearch;
   isHomePage: boolean = false;
@@ -36,8 +38,6 @@ export class LayoutComponent implements OnInit {
   isNavbarVisible = true;
   isNavbarCollapsed: boolean = false;
   cartItemsCount: number = 0;
-  isSearchOpen: boolean;
-  searchIconElement: HTMLElement;
   currentUser$ = this.authService.currentUser$;
   faInstagram = faInstagram;
   faWhatsapp = faWhatsapp;
@@ -47,20 +47,34 @@ export class LayoutComponent implements OnInit {
   faEnvelope = faEnvelope;
   faPhone = faPhone;
 
+  public isCartVisible: boolean = false;
+  public isSearchVisible: boolean = false;
+
+
   constructor(
     public authService: AuthenticationService,
     private cartDataService: CartDataService,
     private cartService: CartService,
-    public cartComponent: CartComponent,
-    public searchComponent: SearchComponent,
     private elRef: ElementRef,
     private router: Router,
-    private uiService: UiService
+    public uiService: UiService
   ) {}
+
+  ngAfterViewInit() {}
+  
   ngOnInit() {
+    this.uiService.cartVisibility.subscribe((visible) => {
+      this.isCartVisible = visible;
+    });
+  
+    this.uiService.searchVisibility.subscribe((visible) => {
+      this.isSearchVisible = visible;
+    });
+  
     this.cartService.cartItems$.subscribe((cartItems) => {
       this.cartItemsCount = cartItems.length;
     });
+  
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.isHomePage =
@@ -68,71 +82,91 @@ export class LayoutComponent implements OnInit {
       }
     });
   }
+  
 
   onCartClick(): void {
-    this.cartComponent.toggleVisibility();
+    this.uiService.toggleCart();
   }
-
+  
   onSearchClick(): void {
-    this.searchComponent.toggleVisibility();
+    this.uiService.toggleSearch();
   }
-
+  
   toggleNavbar(): void {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 
-  collapseNavbar() {
-    const navbarToggle =
-      this.elRef.nativeElement.querySelector('.navbar-collapse');
-    if (navbarToggle && navbarToggle.classList.contains('show')) {
-      navbarToggle.classList.remove('show');
-    }
-  }
+  @ViewChild('cartContainerRef', { static: false }) cartContainerRef: ElementRef;
+  @ViewChild('searchContainerRef', { static: false }) searchContainerRef: ElementRef;
+  
+  @ViewChild('cartToggleRef', { static: false }) cartToggleRef: ElementRef;
+  @ViewChild('searchToggleRef', { static: false }) searchToggleRef: ElementRef;
 
-  onCloseClick(): void {
-    this.uiService.hide();
+  @ViewChild('navbarCollapse') navbarCollapse: ElementRef;
+
+  collapseNavbar() {
+    if (this.navbarCollapse?.nativeElement.classList.contains('show')) {
+      this.navbarCollapse.nativeElement.classList.remove('show');
+    }
     this.isNavbarCollapsed = true;
   }
 
+  onCloseClick(): void {
+    this.uiService.hideCart();
+    this.uiService.hideSearch();
+    this.isNavbarCollapsed = true;
+  }
+  
   @HostListener('document:click', ['$event'])
-  handleClickOutside(event: Event) {
-    if (this.searchContainerRef) {
-      const target = event.target as HTMLElement;
-      if (target !== this.searchIconElement) {
-        this.isSearchOpen = false;
-      }
+  handleClickOutside(event: MouseEvent): void {
+    if (!this.isCartVisible && !this.isSearchVisible) {
+      return;
+    }
+  
+    const target = event.target as HTMLElement;
+  
+    const isClickInsideCart =
+      this.cartContainerRef?.nativeElement?.contains(target) ||
+      this.cartToggleRef?.nativeElement?.contains(target);
+  
+    const isClickInsideSearch =
+      this.searchContainerRef?.nativeElement?.contains(target) ||
+      this.searchToggleRef?.nativeElement?.contains(target);
+  
+    if (this.isCartVisible && !isClickInsideCart) {
+      this.uiService.hideCart();
+    }
+  
+    if (this.isSearchVisible && !isClickInsideSearch) {
+      this.uiService.hideSearch();
     }
   }
+  
+  
 
-  @ViewChild('searchContainerRef') searchContainerRef: ElementRef;
 
   currentYear = new Date().getFullYear();
 
   prevScrollPos = window.pageYOffset;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const currentScrollPos = window.pageYOffset;
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  const currentScrollPos = window.pageYOffset;
 
-    if (this.prevScrollPos > currentScrollPos) {
-      this.isNavbarVisible = true;
-    } else {
-      this.isNavbarVisible = false;
-    }
+  const cartOpen = this.isCartVisible;
+  const searchOpen = this.isSearchVisible;
 
+  if (Math.abs(this.prevScrollPos - currentScrollPos) > 5) { // Add a threshold to reduce updates
+    
+    if (!cartOpen && !searchOpen) {
+      this.isNavbarVisible = this.prevScrollPos > currentScrollPos || currentScrollPos === 0;
+    }    
+    this.isAtTop = currentScrollPos === 0;
     this.prevScrollPos = currentScrollPos;
-
-    if (currentScrollPos === 0) {
-      this.isAtTop = true;
-    } else {
-      this.isAtTop = false;
-    }
   }
+}
 
   logout(event: MouseEvent) {
-    const simulatedClickEvent = new MouseEvent('click', { bubbles: true }); // Simulate a click event
-    document.getElementById('userMenu')?.dispatchEvent(simulatedClickEvent);
-
     this.authService.logout().subscribe(() => {
       this.router.navigate(['']);
     });

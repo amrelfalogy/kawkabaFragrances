@@ -27,10 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { HotToastModule } from '@ngneat/hot-toast';
 import { MatMenuModule } from '@angular/material/menu';
 import { PersonalGuideComponent } from './personal-guide/personal-guide.component';
 import { PerfumeForComponent } from './personal-guide/perfume-for/perfume-for.component';
@@ -103,9 +100,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    HotToastModule.forRoot(),
+   
     MatMenuModule,
     MatSnackBarModule,
   ],

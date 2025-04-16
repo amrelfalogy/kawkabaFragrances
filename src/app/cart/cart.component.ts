@@ -1,11 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CartDataService } from '../services/cartData.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Product } from '../product';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { UiService } from '../services/Ui.service';
 import { Subscription } from 'rxjs';
-// import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -14,47 +12,41 @@ import { Subscription } from 'rxjs';
 })
 export class CartComponent implements OnInit, OnDestroy {
   faXmark = faXmark;
-  // product: Product[] = [];
   cartItems: Product[] = [];
-  isVisible: boolean = false;
-  subscription: Subscription;
+  private cartSubscription: Subscription;
 
   constructor(
     private cartService: CartService,
-    private uiService: UiService // private location: Location
-  ) {
-    this.subscription = this.uiService.isVisible.subscribe(
-      (visible) => (this.isVisible = visible)
-    );
-  }
-
-  loadCart(): void {
-    this.cartItems = this.cartService.getCartItems();
-  }
+    private uiService: UiService
+  ) {}
 
   ngOnInit() {
-    this.loadCart();
+    // ✅ Subscribing to live cart updates
+    this.cartSubscription = this.cartService.cartItems$.subscribe((items) => {
+      this.cartItems = items;
+    });
   }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // 🔐 Always clean up subscriptions to avoid memory leaks
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   onCloseClick() {
-    this.uiService.hide();
+    this.uiService.hideCart();
     console.log('onCloseClick called');
-  }
-  toggleVisibility(): void {
-    this.isVisible = !this.isVisible;
   }
 
   removeFromCart(productId: string): void {
     this.cartService.removeFromCart(productId);
-    this.loadCart();
+    // ❌ No need to call loadCart anymore
   }
 
   clearCart(): void {
     this.cartService.clearCart();
-    this.cartItems = [];
+    // ✅ The cartItems will auto-clear because of the subscription
   }
 
   increaseQuantity(item: Product): void {
@@ -68,8 +60,4 @@ export class CartComponent implements OnInit, OnDestroy {
       this.cartService.updateQuantity(item._id, item.quantity);
     }
   }
-
-  // getCartTotal(): number {
-  //   return this.cartDataService.getCartTotal();
-  // }
 }

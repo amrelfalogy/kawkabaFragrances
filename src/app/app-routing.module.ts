@@ -28,18 +28,11 @@ import { ProductsComponent } from './products/products.component';
 import { SearchComponent } from './search/search.component';
 import { ScentFinderComponent } from './personal-guide/scent-finder/scent-finder.component';
 // import { ProductDetailsComponent } from './product-details/product-details.component';
-import {
-  canActivate,
-  redirectUnauthorizedTo,
-  redirectLoggedInTo,
-} from '@angular/fire/auth-guard';
+
 import { CartComponent } from './cart/cart.component';
 import { ScanSmellComponent } from './personal-guide/scan-smell/scan-smell.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 // import { ProductAboutGuard } from './product-about.guard';
-
-const redirectToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

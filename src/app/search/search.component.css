@@ -46,3 +46,30 @@ img {
   font-size: 13px;
   font-weight: 400;
 }
+
+/* Loading Spinner */
+.loading-spinner {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.loading-spinner p {
+  font-size: 16px;
+  color: #555;
+}
+
+.search-container {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-container.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.search-container.is-hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+}

@@ -34,25 +34,4 @@ export class ProductService {
     );
   }
 
-  // getNewArrivals(): Observable<any> {
-  //   const url = `${this.url}/new-arrivals`;
-  //   return this.http.get<{ data: Product[] }>(url).pipe(
-  //     map((response) => response.data),
-  //     catchError((error) => {
-  //       console.error('Error fetching new arrivals:', error);
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
-
-  // getBestSellers(): Observable<Product[]> {
-  //   const url = `${this.url}/best-sellers`;
-  //   return this.http.get<{ data: Product[] }>(url).pipe(
-  //     map((response) => response.data),
-  //     catchError((error) => {
-  //       console.error('Error fetching new arrivals:', error);
-  //       return throwError(error);
-  //     })
-  //   );
-  // }
 }

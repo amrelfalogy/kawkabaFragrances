@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { ObjectId } = require("mongodb");
 
 // Load the products from the JSON file
 const productsFilePath = "./products.json";
@@ -19,9 +20,9 @@ products.forEach((product) => {
   if (typeof product.main_accords === "string") {
     product.main_accords = convertMainAccords(product.main_accords);
   }
-  // eslint-disable-next-line no-undef
+
   if (typeof product._id !== "string" || !ObjectId.isValid(product._id)) {
-    delete product._id;
+    product._id = new ObjectId().toString(); // Generate a new ObjectId
   }
 
   // Ensure price field is present

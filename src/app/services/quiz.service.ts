@@ -11,6 +11,7 @@ export class QuizService {
   constructor(private http: HttpClient) {}
 
   getRecommendations(data: any): Observable<any> {
+    console.log('Data sent to API:', data);
     return this.http.post<any>(`${this.apiUrl}/quiz`, data);
   }
 }

@@ -37,17 +37,17 @@ export class ProductAboutComponent {
     this.isDescriptionTruncated = !this.isDescriptionTruncated;
   }
 
-  // onSelectSize(size: ProductSize) {
-  //   this.selectedPrice = size.price;
-  // }
-  // onSelectSize(selectedVolume: string) {
-  //   const size = this.sizes.find((size) => size.volume === selectedVolume);
-  //   if (size) {
-  //     this.selectedPrice = this.defaultPrice * size.multiplier;
-  //   } else {
-  //     this.selectedPrice = this.defaultPrice; // Fallback to default price if no size is matched
-  //   }
-  // }
+  getSizeByPrice(price: number): string {
+    if (price === 350) {
+      return '110ml';
+    } else if (price === 400) {
+      return '60ml';
+    } else if (price === 450) {
+      return '100ml';
+    } else {
+      return 'Unknown size'; // Fallback for unexpected prices
+    }
+  }
 
   getProduct(productId: string): void {
     console.log('Fetching product with ID:', productId);
@@ -62,6 +62,7 @@ export class ProductAboutComponent {
     );
   }
 
+  
   ngOnInit(): void {
     this.routeSub = this.route.paramMap.subscribe((params) => {
       const productId = params.get('id');

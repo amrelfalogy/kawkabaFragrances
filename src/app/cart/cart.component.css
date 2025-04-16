@@ -1,27 +1,6 @@
-.cart-container {
-  position: fixed; /* Fixed positioning to stay over content */
-  top: 0;
-  right: 0;
-  width: 300px;
-  background-color: #fff;
-  display: none;
-  z-index: 999;
-  transition: transform 0.3s ease-in-out;
-}
-.cart-container.isVisible {
-  display: block;
-  transform: translateX(0);
-}
-.is-visible {
-  display: block;
-}
-.is-hidden {
-  display: none;
-}
-.cart-content,
-.container {
-  height: 100vh;
-}
+
+
+
 .cart-title {
   display: flex;
   padding-top: 10px;
@@ -48,7 +27,6 @@
   letter-spacing: 2px;
 }
 .mybtns {
-  position: fixed;
   bottom: 5px;
   width: -webkit-fill-available;
 }

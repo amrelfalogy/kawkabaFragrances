@@ -48,21 +48,10 @@
             >
             <p id="number-votes">({{ product.number_votes }})</p>
           </div>
-          <p id="priceDisplay">Price: {{ defaultPrice | currency : "LE" }}</p>
+          <p id="priceDisplay">Price: {{ product.price| currency : "LE" }}</p>
           <div class="size">
             <p>Size:</p>
-            <!-- <div *ngIf="product">
-              <select
-                id="sizeSelector"
-                #sizeSelect
-                (change)="onSelectSize(sizeSelect.value)"
-              >
-                <option value="50ml">50ml</option>
-                <option value="60ml">60ml</option>
-                <option value="100ml">100ml</option>
-              </select>
-            </div> -->
-            <div class="size-value">60ml</div>
+            <div class="size-value">{{ getSizeByPrice(product.price) }}</div>
           </div>
           <div class="btn">
             <button class="mybtn" (click)="addToCart()">add to cart</button>
