@@ -23,6 +23,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { SearchComponent } from '../search/search.component';
 import { UiService } from '../services/Ui.service';
 import { CartService } from '../services/cart.service';
+import { Collapse } from 'bootstrap';
 
 
 @Component({
@@ -92,9 +93,22 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     this.uiService.toggleSearch();
   }
   
-  toggleNavbar(): void {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
+  // toggle the navbar collapse burger state manually, with deletion of data-bs-toggle, aria..etc in burger btn
+  toggleNavbar() {
+    const element = this.navbarCollapse?.nativeElement;
+    if (element) {
+      const bsCollapse = Collapse.getInstance(element) || new Collapse(element, { toggle: false });
+  
+      if (element.classList.contains('show')) {
+        bsCollapse.hide();
+        this.isNavbarCollapsed = true;
+      } else {
+        bsCollapse.show();
+        this.isNavbarCollapsed = false;
+      }
+    }
   }
+  
 
   @ViewChild('cartContainerRef', { static: false }) cartContainerRef: ElementRef;
   @ViewChild('searchContainerRef', { static: false }) searchContainerRef: ElementRef;
@@ -105,11 +119,14 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarCollapse') navbarCollapse: ElementRef;
 
   collapseNavbar() {
-    if (this.navbarCollapse?.nativeElement.classList.contains('show')) {
-      this.navbarCollapse.nativeElement.classList.remove('show');
+    const element = this.navbarCollapse?.nativeElement;
+    if (element && element.classList.contains('show')) {
+      const bsCollapse = Collapse.getInstance(element) || new Collapse(element, { toggle: false });
+      bsCollapse.hide(); // Animates collapse
+      this.isNavbarCollapsed = true;
     }
-    this.isNavbarCollapsed = true;
   }
+  
 
   onCloseClick(): void {
     this.uiService.hideCart();
